@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   # layout "home_page_after_user_signed_in"
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-  impressionist actions: [:index, :show], unique: [:session_hash]
+  impressionist :actions=>[:show,:index]
 
   # GET /questions
   # GET /questions.json
@@ -19,6 +19,7 @@ class QuestionsController < ApplicationController
     @answers = @question.answers.includes(:user)
     @question = Question.find(params[:id])
     @answer = @question.answers.build
+    impressionist(@question)
     # fresh_when(etag: @question, last_modified: @question.updated_at, public: false)
   end
 

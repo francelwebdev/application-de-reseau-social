@@ -53,8 +53,8 @@
                         </p>
                         <div class="bg-light py-3 px-2 d-flex justify-content-between">
                             <p class="">
-                                <i class="fas fa-comment-alt"></i>&nbsp; 
-                                <span class="badge">
+                                <i class="fas fa-comment"></i>&nbsp; 
+                                <!-- <span class="badge"> -->
                                     <% if question.answers.present? %>
                                     <% if question.answers.count <= 1 %>
                                     <%= question.answers.count %> réponse
@@ -64,19 +64,19 @@
                                     <% else %>
                                     0 réponse
                                     <% end %>
-                                </span>
+                                <!-- </span> -->
                             </p>
                             <p class="">
                                 <% if @question.impressionist_count > 1%>
-                                <span class="badge">
+                                <!-- <span class="badge"> -->
                                     <i class="fas fa-eye"></i>&nbsp; 
-                                    <%= "#{@question.impressionist_count} vues" %>
-                                </span>
+                                    <%= "#{question.impressionist_count} vues" %>
+                                <!-- </span> -->
                                 <% else %>
-                                <span class="badge">
+                                <!-- <span class="badge"> -->
                                     <i class="fas fa-eye"></i>&nbsp; 
-                                    <%= "#{@question.impressionist_count} vue" %>
-                                </span>
+                                    <%= "#{question.impressionist_count} vue" %>
+                                <!-- </span> -->
                                 <% end %>
                             </p>
                             <p class="mb-0">
