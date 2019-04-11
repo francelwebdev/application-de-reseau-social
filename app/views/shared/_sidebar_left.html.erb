@@ -1,0 +1,32 @@
+<ul class="list-unstyled">
+    <li class="py-2 sr-only">
+        <%= active_link_to questions_path, class: "text-decoration-none text-dark" do %>
+        <i class="fas fa-home"></i>&nbsp; Accueil
+        <% end %>
+    </li>
+    <li class="py-2 sr-only">
+        <%= active_link_to user_path(current_user.id), class: "text-decoration-none text-dark" do %>
+        <i class="fas fa-home"></i>&nbsp; Mon profile
+        <% end %>
+    </li>
+    <li class="py-2">
+        <%= active_link_to account_my_friends_path, class: "text-decoration-none text-dark" do %>
+        <i class="fas fa-user-friends"></i>&nbsp; Mes amis
+        <% end %>
+    </li>
+    <li class="py-2">
+        <%= active_link_to users_path, class: "text-decoration-none text-dark" do %>
+        <i class="fas fa-user-plus"></i>&nbsp; Trouver des amies
+        <% end %>
+    </li>
+    <li class="py-2">
+        <%= active_link_to account_my_questions_path, class: "text-decoration-none text-dark" do %>
+        <i class="fas fa-home"></i>&nbsp; Mes questions
+        <% end %>
+    </li>
+    <li class="py-2 sr-only">
+        <%= active_link_to root_path, class: "text-decoration-none text-dark" do %>
+        <i class="fas fa-home"></i>&nbsp; Accueil
+        <% end %>
+    </li>
+</ul>

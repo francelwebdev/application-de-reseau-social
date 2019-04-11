@@ -1,0 +1,22 @@
+fr:
+# Mon code
+  pagy:
+    nav:
+      prev: "&lsaquo;&nbsp;Précédent"
+      next: "Suivant&nbsp;&rsaquo;"
+      gap: "&hellip;"
+    info:
+      single_page:
+        zero: "Aucun %{item_name} trouvé"
+        one: "Affichage <b>1</b> %{item_name}"
+        other: "Affichage <b>all %{count}</b> %{item_name}"
+      multiple_pages: "Affichage %{item_name} <b>%{from}-%{to}</b> de <b>%{count}</b> au total"
+      item_name:
+        zero: "items"
+        one: "item"
+        other: "items"
+    compact: "Page %{page_input} de %{pages}"
+    items:
+    one: "Afficher %{items_input} éléments par page"
+    other: "Afficher %{items_input} éléments par page"
+# Mon code

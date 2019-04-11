@@ -1,0 +1,109 @@
+<div class="row no-gutters">
+    <div class="col-lg-12 mb-2">
+        <div class="card">
+            <div class="card-body">
+                <%#= active_link_to "Ask a question", new_question_path, class: "btn btn-primary btn-block" %>
+                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal" data-toggle="modal" data-target="#exampleModal">
+                    Poser une question
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body text-center">
+                <p class="m-0">Questions</p>
+                <p class="m-0 h3 font-weight-bold">
+                    <%= @tout_les_questions %> +
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body text-center">
+                <p class="m-0">Réponses</p>
+                <p class="m-0 h3 font-weight-bold">
+                    <%= @tout_les_reponses %> +
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-12 my-2">
+        <div class="card">      
+            <div class="card-body">
+                <p class="card-title font-weight-bold"><i class="fas fa-users"></i>&nbsp; Utilisateurs récents</p>
+                <% if @les_utilisateurs_recents.any? %>
+                <ul class="list-unstyled">
+                    <% @les_utilisateurs_recents.each do |ur| %>
+                    <li class="row">
+                        <% if ur.profile_picture.attached? %>
+                        <div class="col-lg-2">
+                            <%= link_to user_path ur.id do %>
+                            <%= image_tag ur.profile_picture, class: "rounded-circle", size: "30x30" %>
+                            <% end %>
+                        </div>
+                        <% else %>
+                        <div class="col-lg-2">
+                            <%= link_to user_path ur.id do %>
+                            <%= image_tag "148705-essential-collection/png/user-3.png", class: "rounded-circle", size: "30x30" %>
+                            <% end %>
+                        </div>
+                        <% end %>
+                        <div class="col-lg-10">
+                            <p class="mb-0">
+                                <%= link_to ur.first_name.capitalize + " " + ur.last_name.upcase, user_path(ur.id), class: "text-decoration-none text-dark font-weight-bold" if ur.first_name.present? && ur.last_name.present? %>
+                            </p>
+                            <p class="mb-0">
+                                <% if ur.questions.any? %>
+                                <% if ur.questions.count >= 2  %>
+                                <%= "#{ur.questions.count} questions posés" %>
+                                <% elsif ur.questions.count <= 1  %>
+                                <%= "#{ur.questions.count} question posé" %>
+                                <% end %>
+                                <% else %>
+                                Aucune question posée
+                                <% end %>
+                            </p>
+                        </div>
+                    </li>
+                    <hr>
+                    <% end %>
+                </ul>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-12 mt-2">
+        <div class="card bg-white">
+            <div class="card-body">
+                <p class="card-title font-weight-bold"><i class="fas fa-tags"></i>&nbsp; Trending tags</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New question</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <%= render "questions/form", question: @question %>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+        </div>
+    </div>
+</div>

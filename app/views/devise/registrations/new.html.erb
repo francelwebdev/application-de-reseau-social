@@ -1,0 +1,39 @@
+
+<% set_meta_tags title: "Inscription utilisateurs", description: "", keywords: "" %>
+
+<section class="container-fluid py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card shadow">
+          <div class="card-body">
+            <h2 class="text-center"><%= t(".sign_up") %></h2>
+
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.error_notification message: "S'il vous plaît examiner les problèmes ci-dessous:" %>
+
+            <div class="form-inputs">
+              <%= f.input :name, placeholder: "Prénom et Nom", input_html: { autocomplete: "name" }, autofocus: true %>
+              <%= f.input :email,
+              required: true, input_html: { autocomplete: "email" } %>
+              <%= f.input :password,
+              required: true,
+              hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length),
+              input_html: { autocomplete: "new-password" } %>
+              <%= f.input :password_confirmation,
+              required: true,
+              input_html: { autocomplete: "new-password" } %>
+            </div>
+
+            <div class="form-actions text-center">
+              <%= f.button :submit, t(".sign_up"), class: "btn btn-secondary" %>
+            </div>
+            <% end %>
+
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

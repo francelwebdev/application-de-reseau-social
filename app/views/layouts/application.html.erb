@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+<head>
+  <%= render "shared/head" %>
+</head>
+<body class="<%= controller_name + '#' + action_name %> bg-light">
+  <%= custom_bootstrap_flash %>
+  <%#= render "shared/flash" %>
+  <%= render "shared/navbar" %>
+  <% if user_signed_in? %>
+  <div class="container">
+    <div class="row">
+      <aside class="col-lg-2 my-2">
+        <%= render "shared/sidebar_left" %>
+      </aside>
+      <div class="col-lg-7 my-2 bg-white">
+        <%= yield %>
+      </div>
+      <aside class="col-lg-3 my-2">
+        <%= render "shared/sidebar_right" %>
+      </aside>
+    </div>
+  </div>
+  <% else %>
+  <main class="container">
+    <div class="row">
+      <%= yield %>
+    </div>
+  </main>
+  <% end %>
+  <%= render "shared/footer" %>
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+</body>
+</html>

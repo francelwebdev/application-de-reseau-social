@@ -1,0 +1,98 @@
+
+<% if @my_questions.any? %>
+<% @my_questions.each do |mq| %>
+    <div class="col-lg-12">
+        <div class="card mb-4">
+        <div class="row no-gutters">
+            <div class="col-md-2">
+                <p class="text-center mt-3">
+                    <% if mq.user.profile_picture.attached? %>
+                    <%= link_to user_path(mq.user.id), class: "text-decoration-none text-dark" do %>
+                    <%= image_tag mq.user.profile_picture, class: "rounded-circle border border-primary shadow", size: "50x50" %>
+                    <%= mq.user.first_name.capitalize %>
+                    <% end %>
+                    <% else %>
+                    <%= link_to user_path(mq.user.id), class: "text-decoration-none text-dark" do %>
+                    <%= image_tag "148705-essential-collection/png/user-3.png", class: "", size: "75x75" %>
+                    <%= mq.user.first_name.capitalize %>
+                    <% end %>
+                    <% end %>
+                </p>
+            </div>
+            <div class="col-md-10">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-3">
+                        <p class="card-text m-0">
+                            <small>Posé il y as <%= time_ago_in_words(mq.created_at) %>.</small>
+                        </p>
+                        <p class="card-text m-0">
+                            <small>Catégorie : <%= mq.category.name %></small>
+                        </p>
+                    </div>
+
+                    <h5 class="card-title font-weight-bold">
+                        <%= link_to mq.title.capitalize.truncate_words(6), question_path(mq.id), class: "text-dark text-decoration-none" %>
+                    </h5>
+                    <p class="card-text">
+                        <%= mq.description.capitalize.truncate_words(25) %>
+                    </p>
+                    <div class="bg-light py-3 px-2 d-flex justify-content-between">
+                        <p class="">
+                            <i class="fas fa-comment-alt"></i>&nbsp; 
+                            <span class="badge">
+                                <% if mq.answers.present? %>
+                                <% if mq.answers.count <= 1 %>
+                                <%= mq.answers.count %> réponse
+                                <% else %>
+                                <%= mq.answers.count %> réponses
+                                <% end %>
+                                <% else %>
+                                0 réponse
+                                <% end %>
+                            </span>
+                        </p>
+                        <p class="">
+                            <% if mq.impressionist_count > 1%>
+                                <span class="badge">
+                                    <%= "#{mq.impressionist_count} vues" %>
+                                </span>
+                            <% else %>
+                                <span class="badge">
+                                    <%= "#{mq.impressionist_count} vue" %>
+                                </span>
+                            <% end %>
+                        </p>
+                        <p class="mb-0">
+                            <%= link_to "Voir les réponses", question_path(mq), class: "btn btn-dark btn-sm" %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <% if mq.user == current_user %>
+            <div class="col-lg-12">
+                <div class="container">
+                   <hr>
+                   <ul class="list-unstyled list-inline">
+                    <li class="list-inline-item">
+                        <%= link_to edit_question_path(mq), class: "text-decoration-none text-dark"  do %>
+                        <i class="fas fa-edit"></i>&nbsp; Modifier
+                        <% end %>
+                    </li>
+                    <li class="list-inline-item">
+                        <%= link_to question_path(mq), method: :delete, data: {confirm: "êtes-vous sûre de suprimer la question ?"}, class: "text-decoration-none text-dark" do %>
+                        <i class="fas fa-eraser"></i>&nbsp; Suprimer
+                        <% end %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <% end %>
+</div>
+    </div>
+<% end %>
+<% end %>
+
+
+
+

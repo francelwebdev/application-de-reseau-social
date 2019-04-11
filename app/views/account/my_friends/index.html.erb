@@ -1,0 +1,8 @@
+<ul>
+    <%= current_user.requested_friendships.each do |request| %>
+        <li>
+            <%= request.name %>
+            <%= link_to "Accept", friendship_path(id: request.id), method: "put" %>
+        </li>
+    <% end %>
+</ul>

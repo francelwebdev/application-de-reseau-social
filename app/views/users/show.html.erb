@@ -1,0 +1,109 @@
+<div class="row py-5">
+    <div class="col-lg-12">
+        <ul class="list-unstyled">
+            <li>
+                <span class="badge badge-secondary p-3"><i class="fas fa-thumbs-up fa-lg"></i>&nbsp; <%= @user.get_likes.size %></span>&nbsp; <%= link_to like_user_path(@user), class: "text-decoration-none text-dark", method: :put do %>
+                Faire un j'aime
+                <% end %>
+            </li>
+            <li class="sr-only">
+                <p class="text-center">
+                    <%= @user.get_dislikes.size %>&nbsp; 
+                    Je n'aime pas
+                    <br>
+                    <%= link_to dislike_user_path(@user), class: "text-decoration-none text-dark", method: :put do %>
+                    <i class="fas fa-thumbs-down fa-lg"></i>&nbsp; 
+                    <% end %>
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-lg-12 d-flex justify-content-around align-items-center">
+        <%= link_to root_path, id: "tl", class: "text-dark", "data-toggle" => "tooltip", "data-placement" => "bottom", title: "Écrire a #{@user.first_name.capitalize}" do %>
+        <i class="fas fa-envelope fa-lg border p-3 rounded-circle shadow"></i>
+        <% end %>
+        
+        <% if @user.profile_picture.attached? %>
+        <%= image_tag @user.profile_picture, class: "rounded-circle shadow ", size: "100x100"  %>
+        <% else %>
+        <%= image_tag "148705-essential-collection/png/user-3.png", class: "rounded-circle shadow ", size: "100x100"  %>
+        <% end %>
+
+        <%= link_to friendships_path(friend_id: @user.id), id: "tl", class: "text-dark", "data-toggle" => "tooltip", "data-placement" => "bottom", title: "Ajouter à mes amies", method: :post do %>
+        <i class="fas fa-plus fa-lg border p-3 rounded-circle shadow"></i>
+        <% end %>
+    </div>
+    <div class="col-lg-12 text-center mt-2">
+        <h4 class="font-weight-bold text-primary">
+            <% if @user.first_name.present? && !@user.last_name.present? %>
+            <%= @user.first_name.capitalize %>
+            <% elsif @user.first_name.present? && @user.last_name.present? %>
+            <%= @user.first_name.capitalize + " " + @user.last_name.upcase %>
+            <% end %>
+        </h4>
+    </div>
+    <div class="col-lg-12 text-center mt-2">
+        <p class="h4">
+            <span class="badge badge-secondary"></span>
+        </p>
+    </div>
+    <div class="col-lg-12 text-center mt-2">
+        <p class="my-3">
+            <!-- <i class="fas fa-quote-left"></i>&nbsp;  -->
+            <%= @user.about %>
+            <!-- &nbsp; <i class="fas fa-quote-right"></i> -->
+        </p> 
+    </div>
+    <div class="col-lg-12 text-center mt-2">
+        <ul class="list-unstyled list-inline coo-user">
+            <% if @user.address.present? and @user.city.present? %>
+            <li class="list-inline-item m-0">
+                <i class="fas fa-map-marker-alt"></i>&nbsp; <%= @user.address.capitalize + " - " + @user.city.capitalize %>
+            </li>
+            <% end %>
+            <li class="list-inline-item m-0">
+                <i class="fas fa-envelope"></i>&nbsp; <%= @user.email %>
+            </li>
+            <% if @user.phone_number.present? %>
+            <li class="list-inline-item m-0">
+                <i class="fas fa-mobile-alt"></i>&nbsp; <%= @user.phone_number %>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+    <div class="col-lg-12 text-center mt-2">
+        <ul class="list-unstyled list-inline">
+            <li class="list-inline-item mx-1">
+                <%= link_to root_path, class: "text-decoration-none" do %>
+                <%= image_tag "145797-social-network-logo-collection/png/facebook.png", size: "40x40" %>   
+                <% end %>
+            </li>
+            <li class="list-inline-item mx-1">
+                <%= link_to root_path, class: "text-decoration-none" do %>
+                <%= image_tag "145797-social-network-logo-collection/png/twitter.png", size: "40x40" %>   
+                <% end %>
+            </li>
+            <li class="list-inline-item mx-1">
+                <%= link_to root_path, class: "text-decoration-none" do %>
+                <%= image_tag "145797-social-network-logo-collection/png/google-plus.png", size: "40x40" %>   
+                <% end %>
+            </li>
+            <li class="list-inline-item mx-1">
+                <%= link_to root_path, class: "text-decoration-none" do %>
+                <%= image_tag "145797-social-network-logo-collection/png/linkedin.png", size: "40x40" %>   
+                <% end %>
+            </li>
+            <li class="list-inline-item mx-1">
+                <%= link_to root_path, class: "text-decoration-none" do %>
+                <%= image_tag "179306-logotypes/png/github.png", size: "40x40" %>   
+                <% end %>
+            </li>
+        </ul>
+        <p>
+            <%#= link_to questions_path, class: "btn btn-primary rounded-pill btn-block" do %>
+            <!-- <i class="fas fa-paperclip"></i>&nbsp; Télécharger mon CV -->
+            <%# end %>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+fr:
+  activerecord:
+    models:
+      user: "Utilisateur"
+    attributes:
+      user:
+        name: "Nom complet"
+        first_name: "Prénom"
+        last_name: "Nom"
+        phone_number: "Numéro de téléphone"
+        gender: "Sexe"
+        profile_picture: "Photo de profile"
+        about: "À propos de moi (brèf présentation)"
+        city: "Ville de résidence"

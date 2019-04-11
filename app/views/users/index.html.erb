@@ -1,0 +1,30 @@
+
+
+
+<div class="row">
+	<% if @users.any? %>
+	<% @users.each do |user| %>
+	<div class="col-lg-6 mb-3">
+		<div class="card">
+			<div class="card-body text-center">
+				<% if user.profile_picture.attached? %>
+				<%= image_tag user.profile_picture, class: "rounded-circle", size: "100x100" %>
+				<% else %>
+				<%= image_tag "148705-essential-collection/png/user-3.png", class: "rounded-circle", size: "100x100" %>
+				<% end %>
+				<h5 class="card-title">
+					<% if user.first_name.present? && !user.last_name.present? %>
+					<%= link_to user.first_name.capitalize, user_path(user), class: "text-decoration-none text-dark" %>
+					<% elsif user.first_name.present? && user.last_name.present? %>
+					<%= link_to user.first_name.capitalize + " " + user.last_name.capitalize, user_path(user), class: "text-decoration-none text-dark" %>
+					<% end %>
+				</h5>
+			</div>
+		</div>
+	</div>
+	<% end %>
+	<% end %>
+</div>
+
+
+<%== pagy_bootstrap_nav(@pagy) %>

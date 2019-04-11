@@ -1,0 +1,7 @@
+fr:
+  activerecord:
+    models:
+      category: "Categorie"
+    attributes:
+      categorie:
+        name: "Nom de la categorie"

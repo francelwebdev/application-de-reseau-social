@@ -1,0 +1,8 @@
+fr:
+  activerecord:
+    models:
+      question: "Question"
+    attributes:
+      question:
+        title: "Titre de la question"
+        description: "Description de la question"
