@@ -7,6 +7,6 @@ class Question < ApplicationRecord
 
     is_impressionable
 
-    # include PublicActivity::Model
-    # tracked only: [:create], owner: Proc.new{|controller, model| controller.current_user}
+    include PublicActivity::Model
+    tracked only: [:create], owner: Proc.new{|controller, model| controller.current_user}
 end

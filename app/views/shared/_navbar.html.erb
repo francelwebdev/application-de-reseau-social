@@ -43,17 +43,19 @@
                             <%= current_user.first_name.capitalize %>
                             <% end %>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
+                        <div class="dropdown-menu dropdown-menu-right shadow" aria-labelledby="navbarDropdown2">
                             <%= link_to user_path(current_user), class: "dropdown-item" do %>
                             <i class="fas fa-user"></i>&nbsp; Mon profile
                             <% end %>
                             <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
-                            <i class="fas fa-cog"></i>&nbsp; Mon compte
+                            <i class="fas fa-cog"></i>&nbsp; Paramètre du compte
                             <% end %>
                             <%#= link_to "Info", root_path, class: "dropdown-item" %>
                             <%#= link_to "Info", root_path, class: "dropdown-item" %>
                             <div class="dropdown-divider"></div>
-                            <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { confirm: 'Voulez-vous vraiment vous déconnecter ?', commit: 'Oui', title: 'Alert', cancel: 'Annuler'} %>
+                            <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item", data: { confirm: 'Voulez-vous vraiment vous déconnecter ?', commit: 'Oui', title: 'Alert', cancel: 'Annuler'} do %>
+                                <i class="fas fa-sign-out-alt"></i>&nbsp; Se déconnecter
+                            <% end %>
                         </div>
                     </li>
                 </ul> 

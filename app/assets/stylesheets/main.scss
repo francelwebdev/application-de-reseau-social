@@ -8,8 +8,13 @@
 // 
 
 @font-face {
-    font-family: 'Lato', sans-serif;
+    // font-family: 'Lato', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    // font-family: 'Montserrat', sans-serif;
     src: url("/fonts/Lato/Lato-Regular.ttf") format("ttf");
+    src: url("/fonts/Raleway/Raleway-Regular.ttf") format("ttf");
+    src: url("/fonts/Montserrat/Montserrat-Regular.ttf") format("ttf");
+
 }
 
 * {
@@ -17,7 +22,7 @@
 }
 
 *:not(.fas, .fab) {
-    font-family: 'Lato', sans-serif !important;
+    font-family: 'Raleway', sans-serif !important;
 }
 
 // .navbar {

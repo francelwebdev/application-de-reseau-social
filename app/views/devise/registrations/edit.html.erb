@@ -6,7 +6,7 @@
 <div class="form-inputs">
   <%= f.input :name, required: true, placeholder: "Prénom et Nom", autofocus: true, autofocus: true %>
   <%= f.input :gender, collection: { Homme: :Male, Femme: :Female }, required: true, as: :radio_buttons %>
-  <%= f.input :profile_picture, as: :file, direct_upload: true %>
+  <%= f.input :profile_picture, as: :file, direct_upload: true, label: "Ajouter une photo de profile" %>
   <p>
     <%= current_user.profile_picture.attached? ? image_tag(current_user.profile_picture, size: "100x100", alt: "Edit Entry", class: "rounded-circle") : nil %>
   </p>

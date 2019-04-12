@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   # layout "home_page_after_user_signed_in"
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   impressionist :actions=>[:show,:index]
+  respond_to :html, :js
 
   # GET /questions
   # GET /questions.json
@@ -9,6 +10,7 @@ class QuestionsController < ApplicationController
     # @questions = Question.all
     # @activities = PublicActivity::Activity.all
     @pagy, @questions = pagy(Question.all.includes(:user, :category, :answers).order(created_at: :desc), items: 1)
+    @activities = PublicActivity::Activity.all
     # @questions = Question.includes(:user, :category, :answers).order(created_at: :desc)
     # fresh_when(@questions, public: false)
   end

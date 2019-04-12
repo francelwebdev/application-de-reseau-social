@@ -26,9 +26,9 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # Mon code
-  def after_sign_in_path_for(resource)
-    questions_path
-  end
+  # def after_sign_in_path_for(resource)
+  #   questions_path
+  # end
   # Mon code
 
 end

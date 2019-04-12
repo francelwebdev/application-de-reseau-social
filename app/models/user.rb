@@ -4,17 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
   devise :confirmable, :trackable
-  devise :omniauthable, omniauth_providers: %i[google_oauth2]
+  # devise :omniauthable, omniauth_providers: %i[google_oauth2]
 
-  has_many :friendships
-  has_many :received_friendships, class_name: "Friendship", foreign_key: "friend_id"
-
-  has_many :active_friends, -> {where(friendships: {accepted: true})}, through: :friendships, source: :friend
-  has_many :received_friends, -> {where(friendships: {accepted: true})}, through: :received_friendships, source: :user
-  has_many :pending_friends, -> {where(friendships: {accepted: false})}, through: :friendships, source: :friend
-  has_many :requested_friendships, -> {where(friendships: {accepted: false})}, through: :received_friendships, source: :user
-
-  acts_as_votable
+  has_many :friendships, dependent: :delete_all
+  has_many :friends, :through => :friendships, dependent: :delete_all
 
   has_many :questions, dependent: :delete_all
   has_many :answers, dependent: :delete_all
@@ -23,19 +16,12 @@ class User < ApplicationRecord
   
   has_person_name
 
+  acts_as_votable
   acts_as_follower
   acts_as_followable
 
   validates :name, presence: true
-
-  def friends
-    active_friends | received_friends
-  end
-
-  def pending
-    pending_friends | requested_friendships
-  end
-
+  
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first

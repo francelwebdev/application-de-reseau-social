@@ -1,9 +1,19 @@
 <div class="text-center">
     <%- if controller_name != 'sessions' %>
+
+        <!-- Mon code -->
+<span>Vous avez déja un compte ?</span>
+<!-- Mon code -->
+
   <%= link_to t(".sign_in"), new_session_path(resource_name) %><br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+
+<!-- Mon code -->
+<span>Vous n'avez pas encore un compte ?</span>
+<!-- Mon code -->
+
   <%= link_to t(".sign_up"), new_registration_path(resource_name) %><br />
 <% end %>
 

@@ -61,9 +61,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # Mon code
-  def after_update_path_for(resource)
-      user_path(resource)
-    end
+  # def after_update_path_for(resource)
+  #     user_path(resource)
+  #   end
   # Mon code
 
 end

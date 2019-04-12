@@ -33,4 +33,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :gender, :profile_picture, :about, :phone_number, :city])
 end
 
+def after_sign_in_path_for(resource)
+    questions_path
+end
+
+def after_update_path_for(resource)
+  user_path(resource)
+end
 end

@@ -1,37 +1,27 @@
 <ul class="list-unstyled">
-    <li class="py-2 sr-only">
-        <%= active_link_to questions_path, class: "text-decoration-none text-dark" do %>
-        <i class="fas fa-home fa-lg"></i>&nbsp; Accueil
-        <% end %>
-    </li>
-    <li class="py-2 sr-only">
-        <%= active_link_to user_path(current_user.id), class: "text-decoration-none text-dark" do %>
-        <i class="fas fa-home fa-lg"></i>&nbsp; Mon profile
-        <% end %>
-    </li>
     <li class="py-2">
-        <%= active_link_to account_my_friends_path, class: "text-decoration-none text-dark" do %>
-        <i class="fas fa-user-friends fa-lg"></i>&nbsp; Mes amis
-        <% end %>
-    </li>
-    <li class="py-2">
-        <%= active_link_to users_path, class: "text-decoration-none text-dark" do %>
-        <i class="fas fa-users fa-lg"></i>&nbsp; Les utilisateurs
-        <% end %>
-    </li>
-    <li class="py-2">
-        <%= active_link_to users_path, class: "text-decoration-none text-dark" do %>
-        <i class="fas fa-comment fa-lg"></i>&nbsp; Mes conversations
-        <% end %>
-    </li>
-    <li class="py-2">
-        <%= active_link_to account_my_questions_path, class: "text-decoration-none text-dark" do %>
-        <i class="fas fa-home fa-lg"></i>&nbsp; Mes questions
+        <%= link_to user_path(current_user.id), class: "text-decoration-none text-dark" do %>
+        <i class="fas fa-user"></i>&nbsp; Mon profile
         <% end %>
     </li>
     <li class="py-2 sr-only">
-        <%= active_link_to root_path, class: "text-decoration-none text-dark" do %>
-        <i class="fas fa-home fa-lg"></i>&nbsp; Accueil
+        <%= link_to account_my_friends_path, class: "text-decoration-none text-dark" do %>
+        <i class="fas fa-user-friends"></i>&nbsp; Mes amis
+        <% end %>
+    </li>
+    <li class="py-2">
+        <%= link_to users_path, class: "text-decoration-none text-dark" do %>
+        <i class="fas fa-users"></i>&nbsp; Les utilisateurs
+        <% end %>
+    </li>
+    <li class="py-2">
+        <%= link_to users_path, class: "text-decoration-none text-dark" do %>
+        <i class="fas fa-comment"></i>&nbsp; Mes conversations
+        <% end %>
+    </li>
+    <li class="py-2">
+        <%= link_to account_my_questions_path, class: "text-decoration-none text-dark" do %>
+        <i class="fas fa-home"></i>&nbsp; Mes questions
         <% end %>
     </li>
 </ul>

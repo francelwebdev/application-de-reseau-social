@@ -3,10 +3,10 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.build(friend_id: params[:friend_id])
     if @friendship.save
       flash[:notice] = "Friend requested"
-      # redirect_to :root_path
+      redirect_to account_my_friends_path
     else
-      flash[:error] = "Unable to request friendship"
-      # redirect_to :root_path
+      flash.now[:alert] = "Unable to request friendship"
+      redirect_to :back
     end
   end
 
@@ -21,7 +21,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendship = Friendship.find_by(id: params[:id])
+    @friendship = current_user.friendships.find(params[:id])
     @friendship.destroy
     flash[:notice] = "Removed friendship"
     redirect_to :back
