@@ -85,8 +85,9 @@ production:
   password: <%= ENV['APPLICATION_DE_RESEAU_SOCIAL_DATABASE_PASSWORD'] %>
 
 
-# Mon code de test de prod en dev
+# Mon code
+# J'utilise la base de donnée de dev pour tester le prod en dev
 # production:
-  # <<: *default
-  # database: application_de_reseau_social_development # J'utilise la base de donnée de dev
-# Mon code de test de prod en dev
+#   <<: *default
+#   database: application_de_reseau_social_development 
+# Mon code
